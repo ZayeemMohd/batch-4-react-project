@@ -1,4 +1,4 @@
- export const resArr = [
+ export const resArray = [
   {
     id: "40377",
     resName: "Lucky Restaurant",

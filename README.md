@@ -20,3 +20,18 @@ This is a food delivery app codebase
     - Copyright
     - Social media links
     - phone no
+
+
+# Normal variables
+declaration => 
+ const resArr = [{}, {}, {}]
+
+updation =>
+ resArr = [{}]
+
+# State variables
+declaration =>
+  const [resArr, setResArr] = useState([{}, {}, {}])
+
+updation =>
+  setResArr([{}])
