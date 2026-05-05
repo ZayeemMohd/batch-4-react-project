@@ -5,6 +5,14 @@ import RestaurantCard from "./RestaurantCard";
 const Body = () => {
   const [resArr, setResArr] = useState(resArray);
 
+  const [isLogin, setIsLogin] = useState(false);
+
+  // useEffect(() => {
+  //   console.log("use effect ke andar ka code run hua");
+  // }, []);
+
+  console.log("fetch called")
+
   return (
     <div className="body">
       <div className="filter-btn-div">
@@ -19,6 +27,15 @@ const Body = () => {
           className="filter-btn"
         >
           Top Rated Restaurants
+        </button>
+
+        <button
+          onClick={() => {
+            setIsLogin(!isLogin);
+          }}
+          className="filter-btn"
+        >
+          {isLogin ? "Logout" : "Login"}
         </button>
       </div>
 
