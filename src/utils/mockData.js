@@ -9,6 +9,7 @@
     imgId:
       "MERCHANDISING_BANNERS/IMAGES/MERCH/2024/7/2/6ef07bda-b707-48ea-9b14-2594071593d1_Biryani.png",
     location: "Santosh Nagar",
+    
   },
   {
     id: "79706",

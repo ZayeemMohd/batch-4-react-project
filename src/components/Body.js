@@ -3,15 +3,22 @@ import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 
 const Body = () => {
-  const [resArr, setResArr] = useState(resArray);
+  // const [resArr, setResArr] = useState(resArray);
+  const [hotelList, setHotelList] = useState([]);
 
-  const [isLogin, setIsLogin] = useState(false);
-
-  // useEffect(() => {
-  //   console.log("use effect ke andar ka code run hua");
-  // }, []);
-
-  console.log("fetch called")
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(process.env.API_URL);
+      const json = await response.json();
+      console.log(
+        json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants,
+      );
+      setHotelList(
+        json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants,
+      );
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className="body">
@@ -28,20 +35,11 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
-
-        <button
-          onClick={() => {
-            setIsLogin(!isLogin);
-          }}
-          className="filter-btn"
-        >
-          {isLogin ? "Logout" : "Login"}
-        </button>
       </div>
 
       <div className="res-container">
-        {resArr.map((resObj) => (
-          <RestaurantCard key={resObj.id} hotelData={resObj} />
+        {hotelList.map((restaurant) => (
+          <RestaurantCard key={restaurant.info.id} hotelData={restaurant.info} />
         ))}
       </div>
     </div>

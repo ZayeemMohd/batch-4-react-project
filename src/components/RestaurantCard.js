@@ -2,26 +2,19 @@ import { baseURL } from "../utils/constants";
 
 const RestaurantCard = ({ hotelData }) => {
   // const { hotelData } = props;
-  const { resName, cuisine, avgRating, delieveryTime, costForTwo, imgId } =
-    hotelData;
+
+  const { name, cloudinaryImageId, cuisines, avgRating , sla, costForTwo} = hotelData;
 
   return (
     <div className="res-card">
       <div className="res-img-container">
-        <img
-          className="res-logo"
-          alt="res-logo"
-          src={
-            baseURL +
-            imgId
-          }
-        />
+        <img className="res-logo" alt="res-logo" src={baseURL + cloudinaryImageId} />
       </div>
-      <h3 className="res-title">{resName} </h3>
-      <h4>{cuisine.join(", ")}</h4>
+      <h3 className="res-title">{name} </h3>
+      <h4>{cuisines.join(", ")}</h4>
       <h4>⭐ {avgRating} Stars</h4>
       <h4>
-        {delieveryTime} mins | ₹{costForTwo} for two
+        {sla.delieveryTime} mins | {costForTwo}
       </h4>
     </div>
   );
