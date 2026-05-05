@@ -1,5 +1,5 @@
 import { resArray } from "../utils/mockData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 
 const Body = () => {

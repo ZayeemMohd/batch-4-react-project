@@ -39,6 +39,7 @@
   background-color: #ff6600;
   border: 1px solid #ffffff;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .search-bar {
