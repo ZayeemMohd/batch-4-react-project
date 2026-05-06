@@ -1,10 +1,11 @@
 import { resArray } from "../utils/mockData";
 import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   // const [resArr, setResArr] = useState(resArray);
-  const [hotelList, setHotelList] = useState([]);
+  const [hotelList, setHotelList] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,6 +20,10 @@ const Body = () => {
     };
     fetchData();
   }, []);
+
+  if (!hotelList) {
+    return <Shimmer />;
+  }
 
   return (
     <div className="body">
@@ -39,7 +44,10 @@ const Body = () => {
 
       <div className="res-container">
         {hotelList.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} hotelData={restaurant.info} />
+          <RestaurantCard
+            key={restaurant.info.id}
+            hotelData={restaurant.info}
+          />
         ))}
       </div>
     </div>

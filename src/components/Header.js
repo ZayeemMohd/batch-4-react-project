@@ -1,11 +1,9 @@
 import { brandLogo } from "../utils/constants";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
-
-  
-  
 
   return (
     <div className="header">
@@ -20,7 +18,7 @@ const Header = () => {
       <div className="nav-items">
         <ul>
           <li>Home</li>
-          <li>About Us</li>
+          <Link to={"/about"}><li>About Us</li></Link> 
           <li>Contact Us</li>
           <li>Cart</li>
           {isLogin ? (
