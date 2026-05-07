@@ -7,9 +7,11 @@ const Header = () => {
 
   return (
     <div className="header">
-      <div className="logo-container">
-        <img className="header-logo" src={brandLogo} />
-      </div>
+      <Link to={"/"}>
+        <div className="logo-container">
+          <img className="header-logo" src={brandLogo} />
+        </div>
+      </Link>
 
       <div className="search-bar">
         <input type="text" placeholder="Search for restaurants, cusines... " />
@@ -17,10 +19,18 @@ const Header = () => {
 
       <div className="nav-items">
         <ul>
-          <li><Link to={"/"}>Home</Link></li>
-          <li><Link to={"/about"}>About Us</Link></li>
-          <li><Link to={"/contact"}>Contact Us</Link></li>
-          <li><Link to={"/cart"}>Cart</Link> </li>
+          <li>
+            <Link to={"/"}>Home</Link>
+          </li>
+          <li>
+            <Link to={"/about"}>About Us</Link>
+          </li>
+          <li>
+            <Link to={"/contact"}>Contact Us</Link>
+          </li>
+          <li>
+            <Link to={"/cart"}>Cart</Link>{" "}
+          </li>
           {isLogin ? (
             <li
               onClick={() => {
