@@ -17,10 +17,10 @@ const Header = () => {
 
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <Link to={"/about"}><li>About Us</li></Link> 
-          <li>Contact Us</li>
-          <li>Cart</li>
+          <li><Link to={"/"}>Home</Link></li>
+          <li><Link to={"/about"}>About Us</Link></li>
+          <li><Link to={"/contact"}>Contact Us</Link></li>
+          <li><Link to={"/cart"}>Cart</Link> </li>
           {isLogin ? (
             <li
               onClick={() => {

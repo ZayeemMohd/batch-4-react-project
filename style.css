@@ -195,3 +195,16 @@
     left: 100%;
   }
 }
+
+
+.about {
+  margin-top: 120px;
+  padding: 20px;
+  text-align: center;
+}
+
+.contact, .cart {
+  margin-top: 120px;
+  padding: 20px;
+  text-align: center;
+}

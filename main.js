@@ -3,21 +3,36 @@ import AppLayout from "./src/AppLayout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Error from "./src/components/Error";
 import About from "./src/components/About";
+import Body from "./src/components/Body";
+import Contact from "./src/components/Contact";
+import Cart from "./src/components/Cart";
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <div>welcome to swiggy</div>,
-    errorElement: <Error />
-  },
-  {
-    path: "/restaurants",
     element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: '/cart',
+        element: <Cart />
+      }
+    ],
+
+    errorElement: <Error />,
   },
-  {
-    path: '/about',
-    element: <About />
-  }
 ]);
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
