@@ -1,25 +1,12 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import RestaurantMenuInfoCard from "./RestaurantMenuInfoCard";
 import MenuItem from "./MenuItem";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  const [menu, setMenu] = useState();
 
-  useEffect(() => {
-    async function MenuAPI() {
-      try {
-        const response = await fetch(process.env.MENU_URL + resId);
-        const data = await response.json();
-        console.log("setting this in menu", data.data.cards);
-        setMenu(data.data.cards);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    MenuAPI();
-  }, []);
+  const menu = useRestaurantMenu(resId);
 
   if (!menu) {
     return (
