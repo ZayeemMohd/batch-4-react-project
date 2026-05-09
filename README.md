@@ -48,3 +48,5 @@ updation =>
                 - Plan the input
                 - Plan the processing/logic
                 - Plan the output/return
+  ## Step 3: Implement the hook
+  ## Step 4: Consume the hook
