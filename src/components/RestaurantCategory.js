@@ -4,17 +4,22 @@ const RestaurnatCategory = ({ category }) => {
   const { title, itemCards } = category;
 
   return (
-    <div>
-      <h3>{title}</h3>
-      <p>{itemCards.length} items</p>
+    <div className="category-accordian">
+      {/* Header */}
+      <div className="category-header">
+        <span>{title} ({itemCards.length})</span>
+        <span>⬇️</span>
+      </div>
 
-      {itemCards.map((menuItem) => {
-        return (
-          <MenuItem key={menuItem.card.info.id} data={menuItem.card.info} />
-        );
-      })}
+      {/* Body */}
+      <div className="category-body">
+        {itemCards.map((menuItem) => {
+          return (
+            <MenuItem key={menuItem.card.info.id} data={menuItem.card.info} />
+          );
+        })}
+      </div>
     </div>
-
   );
 };
 

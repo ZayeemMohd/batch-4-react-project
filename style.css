@@ -235,3 +235,32 @@
 .menu-item-card-desc {
   padding: 5px;
 }
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 20px;
+  color: #ff6600;
+  background-color: antiquewhite;
+  box-shadow: #0000002a 0px 0px 10px 2px;
+  padding: 15px 25px;
+  width: 60%;
+}
+
+.category-header:hover {
+  background-color: rgb(246, 220, 186);
+  cursor: pointer;
+}
+
+.category-body {
+  width: 60%;
+  justify-content: center;
+}
+
+.category-accordian {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
