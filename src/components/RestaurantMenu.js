@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import RestaurantMenuInfoCard from "./RestaurantMenuInfoCard";
 import MenuItem from "./MenuItem";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RestaurnatCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -24,9 +25,17 @@ const RestaurantMenu = () => {
     );
   }
 
-  const menuItemList =
-    menu[5].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards;
-  console.log(menuItemList);
+  const categoriesArr = menu[5].groupedCard.cardGroupMap.REGULAR.cards.filter(
+    (category) => {
+      console.log(category.card.card["@type"]);
+      return (
+        category.card.card["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+      );
+    },
+  );
+
+  console.log(categoriesArr);
 
   return (
     <div>
@@ -42,9 +51,12 @@ const RestaurantMenu = () => {
 
       <h2>Menu: </h2>
 
-      {menuItemList.map((menuItem) => {
+      {categoriesArr.map((categoryObj) => {
         return (
-          <MenuItem key={menuItem.card.info.id} data={menuItem.card.info} />
+          <RestaurnatCategory
+            key={categoryObj.card.card.categoryId}
+            category={categoryObj.card.card}
+          />
         );
       })}
     </div>
