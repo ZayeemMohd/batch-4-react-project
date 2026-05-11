@@ -7,6 +7,10 @@ import Body from "./src/components/Body";
 import Contact from "./src/components/Contact";
 import Cart from "./src/components/Cart";
 import RestaurantMenu from "./src/components/RestaurantMenu";
+// import Grocery from "./src/components/Grocery"
+
+import {lazy, Suspense} from "react"
+const Grocery = lazy(() => import("./src/components/Grocery"))
 
 const appRouter = createBrowserRouter([
   {
@@ -29,6 +33,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/grocery",
+        element: <Suspense fallback={<h1 style={{padding: "200px"}}>Loading...</h1>}><Grocery /></Suspense> 
       },
       {
         path: "/restaurant/:resId",
