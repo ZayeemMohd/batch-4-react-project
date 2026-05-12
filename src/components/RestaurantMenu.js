@@ -3,9 +3,11 @@ import RestaurantMenuInfoCard from "./RestaurantMenuInfoCard";
 import MenuItem from "./MenuItem";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurnatCategory from "./RestaurantCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
+  const [showItems, setshowItems] = useState(null);
 
   const menu = useRestaurantMenu(resId);
 
@@ -34,7 +36,6 @@ const RestaurantMenu = () => {
       );
     },
   );
-
   console.log(categoriesArr);
 
   return (
@@ -51,11 +52,15 @@ const RestaurantMenu = () => {
 
       <h2>Menu: </h2>
 
-      {categoriesArr.map((categoryObj) => {
+      {categoriesArr.map((categoryObj, index) => {
         return (
           <RestaurnatCategory
             key={categoryObj.card.card.categoryId}
             category={categoryObj.card.card}
+            command={index == showItems ? true: false}
+            setIndex={()=>{
+              setshowItems(index === showItems ? null : index)
+            }}
           />
         );
       })}
