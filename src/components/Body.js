@@ -4,29 +4,32 @@ import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import HotelListContext from "../utils/HotelListContext";
-import {useContext} from 'react'
+import { useContext } from "react";
 
 const Body = () => {
   // const [resArr, setResArr] = useState(resArray);
 
-  const {hotelList, setHotelList} = useContext(HotelListContext)
-
+  const { hotelList, setHotelList } = useContext(HotelListContext);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(process.env.API_URL);
       const json = await response.json();
-      console.log(
-        json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants,
-      );
-      setHotelList(
-        json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants,
-      );
+      console.log(json?.data);
+      if (json?.data.cards.length > 11) {
+        setHotelList(
+          json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants,
+        );
+      } else {
+        setHotelList(
+          json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants,
+        );
+      }
     };
     fetchData();
   }, []);
-
-
 
   if (!hotelList) {
     return <Shimmer />;
@@ -37,11 +40,11 @@ const Body = () => {
       <div className="filter-btn-div">
         <button
           onClick={() => {
-            const filteredArr = resArr.filter((resObj) => {
+            const filteredArr = hotelList.filter((resObj) => {
               return resObj.avgRating >= 4.5;
             });
 
-            setResArr(filteredArr);
+            setHotelList(filteredArr);
           }}
           className="filter-btn"
         >

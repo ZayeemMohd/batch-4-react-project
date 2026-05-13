@@ -10,9 +10,11 @@ const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
   const isOnline = useOnlineStatus();
 
-  const {hotelList, setHotelList} = useContext(HotelListContext);
+  const [input, setInput] = useState("");
 
-  console.log("hotel list from header component", hotelList)
+  const { hotelList, setHotelList } = useContext(HotelListContext);
+
+  console.log("hotel list from header component", hotelList);
 
   const { name } = useContext(UserContext);
 
@@ -25,7 +27,20 @@ const Header = () => {
       </Link>
 
       <div className="search-bar">
-        <input type="text" placeholder="Search for restaurants, cusines... " />
+        <input
+          type="text"
+          value={input}
+          placeholder="Search for restaurants, cusines... "
+          onChange={(e) => {
+            setInput(e.target.value);
+
+            const filteredHotelList = hotelList.filter((hotel) => {
+              return hotel.info.name.toLowerCase().includes(input.toLowerCase());
+            });
+
+            setHotelList(filteredHotelList);
+          }}
+        />
       </div>
 
       <div className="nav-items">
