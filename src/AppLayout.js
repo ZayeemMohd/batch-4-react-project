@@ -10,6 +10,7 @@ import { useState } from "react";
 
 const AppLayout = () => {
   const [hotelList, setHotelList] = useState();
+  const [filteredHotelList, setFilteredHotelList] = useState();
 
   //authentication
 
@@ -19,7 +20,14 @@ const AppLayout = () => {
       <UserContext.Provider
         value={{ name: "Zayeem", email: "zayeemuddin123@gmail.com" }}
       >
-        <HotelListContext.Provider value={{ hotelList, setHotelList }}>
+        <HotelListContext.Provider
+          value={{
+            hotelList,
+            setHotelList,
+            filteredHotelList,
+            setFilteredHotelList,
+          }}
+        >
           <Header />
           {isOnline ? <Outlet /> : <OfflinePage />}
           <Footer />

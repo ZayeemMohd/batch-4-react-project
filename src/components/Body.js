@@ -9,7 +9,8 @@ import { useContext } from "react";
 const Body = () => {
   // const [resArr, setResArr] = useState(resArray);
 
-  const { hotelList, setHotelList } = useContext(HotelListContext);
+  const { hotelList, setHotelList, filteredHotelList, setFilteredHotelList } =
+    useContext(HotelListContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,11 +22,19 @@ const Body = () => {
           json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants,
         );
+        setFilteredHotelList(
+          json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants,
+        );
       } else {
         setHotelList(
           json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants,
         );
+        setFilteredHotelList(
+                json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants,
+        )
       }
     };
     fetchData();
@@ -53,7 +62,7 @@ const Body = () => {
       </div>
 
       <div className="res-container">
-        {hotelList.map((restaurant) => (
+        {filteredHotelList.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={`/restaurant/${restaurant.info.id}`}
