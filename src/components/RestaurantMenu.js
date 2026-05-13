@@ -8,6 +8,7 @@ import { useState } from "react";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const [showItems, setshowItems] = useState(null);
+  const [company, setCompany] = useState("sasta-swiggy");
 
   const menu = useRestaurantMenu(resId);
 
@@ -55,11 +56,12 @@ const RestaurantMenu = () => {
       {categoriesArr.map((categoryObj, index) => {
         return (
           <RestaurnatCategory
+            brandName={company}
             key={categoryObj.card.card.categoryId}
             category={categoryObj.card.card}
-            command={index == showItems ? true: false}
-            setIndex={()=>{
-              setshowItems(index === showItems ? null : index)
+            command={index == showItems ? true : false}
+            setIndex={() => {
+              setshowItems(index === showItems ? null : index);
             }}
           />
         );

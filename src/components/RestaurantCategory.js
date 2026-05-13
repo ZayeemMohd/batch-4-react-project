@@ -1,7 +1,7 @@
 import MenuItem from "./MenuItem";
 import { useState } from "react";
 
-const RestaurnatCategory = ({ category, command, setIndex }) => {
+const RestaurnatCategory = ({ category, command, setIndex, brandName }) => {
  
   const { title, itemCards } = category;
 
@@ -24,7 +24,7 @@ const RestaurnatCategory = ({ category, command, setIndex }) => {
         <div className="category-body">
           {itemCards.map((menuItem) => {
             return (
-              <MenuItem key={menuItem.card.info.id} data={menuItem.card.info} />
+              <MenuItem brandName={brandName} key={menuItem.card.info.id} data={menuItem.card.info} />
             );
           })}
         </div>

@@ -3,10 +3,14 @@ import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import HotelListContext from "../utils/HotelListContext";
+import {useContext} from 'react'
 
 const Body = () => {
   // const [resArr, setResArr] = useState(resArray);
-  const [hotelList, setHotelList] = useState();
+
+  const {hotelList, setHotelList} = useContext(HotelListContext)
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,6 +25,8 @@ const Body = () => {
     };
     fetchData();
   }, []);
+
+
 
   if (!hotelList) {
     return <Shimmer />;

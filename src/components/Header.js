@@ -2,10 +2,19 @@ import { brandLogo } from "../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
+import HotelListContext from "../utils/HotelListContext";
 
 const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
   const isOnline = useOnlineStatus();
+
+  const {hotelList, setHotelList} = useContext(HotelListContext);
+
+  console.log("hotel list from header component", hotelList)
+
+  const { name } = useContext(UserContext);
 
   return (
     <div className="header">
@@ -74,6 +83,7 @@ const Header = () => {
               Login
             </li>
           )}
+          <li>{name}</li>
         </ul>
       </div>
     </div>
